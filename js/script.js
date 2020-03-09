@@ -1,4 +1,7 @@
 console.log("front-end");
+console.log(sessionStorage);
+
+let url;
 
 $(document).ready(function(){
   $('#heading').click(function(){
@@ -12,14 +15,29 @@ $(document).ready(function(){
   });
 
   $('#homePage').hide();
-  $('#adminBtn').click(function(){
+  $('#homeBtn').click(function(){
     $('#adminPage').hide();
     $('#homePage').show();
   });
 
+//get url and port from config.json
+$.ajax({
+  url : 'config.json',
+  type : 'GET',
+  dataType : 'json',
+  success : function(configData){
+    console.log(configData);
+    url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`
+    console.log(url);
+  },
+  error:function() {
+    console.log('ERROR: cannot call API');
+  }//error
+});//ajax
+
   $('#viewUserBtn').click(function(){
     $.ajax({
-      url : 'http://192.168.33.10:3000/allUsers',
+      url : `${url}/allUsers`,
       type : 'GET',
       dataType : 'json',
       success : function(usersFromMongo){
@@ -30,7 +48,65 @@ $(document).ready(function(){
       }//error
 
     });//ajax
-  }); //document ready
+  });
+
+  $('#viewProducts').click(function(){
+    $.ajax({
+      url : `${url}/allDBProducts`,
+      type : 'GET',
+      dataType : 'json',
+      success : function(productsFromMongo){
+        console.log(productsFromMongo);
+
+        for(let i=0; i<productsFromMongo.length; i++){
+          document.getElementById('productCards').innerHTML +=
+          `<div class="col mt-3">
+          <h3 class=""> ${productsFromMongo[i].name}</h3>
+          <h4 class="">$${productsFromMongo[i].price}</h4>
+          </div>`;
+        }
+
+      },
+      error:function() {
+        console.log('ERROR: cannot call API');
+      }//error
+
+    });//ajax
+  });
+
+  // login section
+
+  $('#loginForm').submit(function(){
+    event.preventDefault();
+    let username = $('#username').val();
+    let password = $('#password').val();
+    console.log(username,password);
+    $.ajax({
+      url :`${url}/loginUser`,
+      type :'POST',
+      data:{
+        username : username,
+        password : password
+        },
+      success : function(loginData){
+        console.log(loginData);
+        if (loginData === 'user not found. Please register' ) {
+          alert ('Register please');
+        } else {
+          sessionStorage.setItem('userId',loginData['_id']);
+          sessionStorage.setItem('userName', loginData['username']);
+          sessionStorage.setItem('userEmail', loginData['email']);
+          console.log(sessionStorage);
+        }
+      },//success
+      error:function(){
+        console.log('error: cannot call api');
+      }//error
 
 
-});
+    });//ajax
+
+  });//submit function
+
+
+});  //document ready
