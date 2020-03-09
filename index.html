@@ -19,7 +19,6 @@
     <button id="adminBtn" type="button" class="btn btn-dark rounded-pill">Admin</button>
     <!-- homepage -->
     <div id="homePage" class="mt-4">
-
       <button id="viewProducts" type="button" class="btn btn-dark rounded-pill mr-20px">View Products</button>
       <!-- product page -->
       <div id="productCards">
@@ -27,26 +26,32 @@
     </div>
 
     <!-- admin page -->
-    <div id="adminPage" class="bg-dark text-light mt-4">
-      <button id="loginBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Login</button>
-      <button id="logoutBtn" type="button" class="btn btn-dark rounded-pill">Logout</button>
-      <button id="registerBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Register</button>
-      <button id="viewUserBtn" type="button" class="btn btn-dark rounded-pill">View all users</button>
-      <!-- login form -->
+    <div id="adminPage">
 
-      <form id="loginForm" class="pb-5 pl-4 bg-secondary">
-        <label for="username" class=""> Username: </label>
-        <input type="text" id="username" name="username" class="form-control col-4" value="username">
+      <div id="loggedIn">
 
-        <label for="password" class=""> Password: </label>
-        <input type="password" name="password" id="password" class="form-control col-4" value="password">
+      </div>
 
-        <button id="submit" name="button" type="submit" class="mt-3 btn btn-primary btn-lg"> Submit </button>
-      </form>
+      <div class="bg-dark text-light mt-4">
+        <button id="loginBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Login</button>
+        <button id="logoutBtn" type="button" class="btn btn-dark rounded-pill">Logout</button>
+        <button id="registerBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Register</button>
+        <button id="viewUserBtn" type="button" class="btn btn-dark rounded-pill">View all users</button>
+        <!-- login form -->
+
+        <form id="loginForm" class="pb-5 pl-4 bg-secondary">
+          <label for="username" class=""> Username: </label>
+          <input type="text" id="username" name="username" class="form-control col-4" value="username">
+
+          <label for="password" class=""> Password: </label>
+          <input type="password" name="password" id="password" class="form-control col-4" value="password">
+
+          <button id="submit" name="button" type="submit" class="mt-3 btn btn-primary btn-lg"> Submit </button>
+        </form>
+      </div>
+
     </div>
-
-
-
+    
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

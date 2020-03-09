@@ -20,20 +20,20 @@ $(document).ready(function(){
     $('#homePage').show();
   });
 
-//get url and port from config.json
-$.ajax({
-  url : 'config.json',
-  type : 'GET',
-  dataType : 'json',
-  success : function(configData){
-    console.log(configData);
-    url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`
-    console.log(url);
-  },
-  error:function() {
-    console.log('ERROR: cannot call API');
-  }//error
-});//ajax
+  //get url and port from config.json
+  $.ajax({
+    url : 'config.json',
+    type : 'GET',
+    dataType : 'json',
+    success : function(configData){
+      console.log(configData);
+      url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`
+      console.log(url);
+    },
+    error:function() {
+      console.log('ERROR: cannot call API');
+    }//error
+  });//ajax
 
   $('#viewUserBtn').click(function(){
     $.ajax({
@@ -87,7 +87,7 @@ $.ajax({
       data:{
         username : username,
         password : password
-        },
+      },
       success : function(loginData){
         console.log(loginData);
         if (loginData === 'user not found. Please register' ) {
@@ -97,6 +97,19 @@ $.ajax({
           sessionStorage.setItem('userName', loginData['username']);
           sessionStorage.setItem('userEmail', loginData['email']);
           console.log(sessionStorage);
+          document.getElementById('loggedIn').innerHTML +=
+
+          '<div class="col pt-5 pb-5"><h3>Welcome back ' + username + '!</h3></div>';
+          $("#loginForm").hide();
+          $("#loginBtn").hide();
+
+          $('#logoutBtn').click(function(){
+            $("#loginForm").show();
+            $("#loginBtn").show();
+            $("#loggedIn").empty();
+            location.reload("#loginForm");
+
+          });
         }
       },//success
       error:function(){
