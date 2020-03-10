@@ -59,6 +59,26 @@
 
       <!-- Input ID -->
       <div id="inputIdDiv" >
+        <!-- add product form -->
+        <form id="addProductForm" class="py-5 px-5">
+          <h1 class="text-primary">Add a Product</h1>   <br><br>
+
+          <label class="mr-4" for="addProductName"> Name of product: </label>
+          <input type="text" id="addProductName" name="addProductName" >
+          <br><br>
+
+          <label class="mr-4" for="addProductPrice"> Price of product: </label>
+          <input type="number" id="addProductPrice" name="addProductPrice" >
+          <br><br>
+
+          <label class="mr-5" for="userId"> User ID: </label>
+          <input type="text" class="ml-5" id="addProductUserId" name="addProductUserId" >
+          <br><br>
+
+          <button id="addProduct" name="addProductButton" type="submit" class="btn btn-primary">Add product</button>
+        </form>
+
+        <!-- update product form -->
         <form id="productForm" class="py-5 px-5">
           <h1 class="text-primary">Update Product</h1>   <br><br>
           <label class="mr-5" for="productId"> Product ID: </label>
