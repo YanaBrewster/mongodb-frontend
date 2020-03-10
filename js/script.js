@@ -4,9 +4,11 @@ console.log(sessionStorage);
 let url;
 
 $(document).ready(function(){
-  $('#heading').click(function(){
-    $(this).css('background', 'teal');
-  });
+  if (sessionStorage['userName']) {
+    console.log('You are logged in');
+  } else {
+    console.log('Please login');
+  }
 
   $('#adminPage').hide();
   $('#adminBtn').click(function(){
@@ -74,6 +76,34 @@ $(document).ready(function(){
     });//ajax
   });
 
+// update product
+
+$('#productForm').submit(function(){
+  event.preventDefault();
+  let productId = $('#productId').val();
+  let productName = $('#productName').val();
+  let productPrice = $('#productPrice').val();
+  let userId = $('#userId').val();
+console.log(productId, productName, productPrice, userId);
+
+  $.ajax({
+    url :`${url}/updateProduct/${productId}`,
+    type :'PATCH',
+    data:{
+      name : productName,
+      price : productPrice,
+      userId : userId
+    },
+    success : function(data){
+      console.log(data);
+
+    },//success
+    error:function(){
+      console.log('error: cannot call api');
+    }//error
+  });//ajax
+});//submit function for product form
+
   // login section
 
   $('#loginForm').submit(function(){
@@ -103,13 +133,7 @@ $(document).ready(function(){
           $("#loginForm").hide();
           $("#loginBtn").hide();
 
-          $('#logoutBtn').click(function(){
-            $("#loginForm").show();
-            $("#loginBtn").show();
-            $("#loggedIn").empty();
-            location.reload("#loginForm");
 
-          });
         }
       },//success
       error:function(){
@@ -119,7 +143,15 @@ $(document).ready(function(){
 
     });//ajax
 
-  });//submit function
+  });//submit function for login form
 
+
+  $('#logoutBtn').click(function(){
+    sessionStorage.clear()
+    $("#loginForm").show();
+    $("#loginBtn").show();
+    $("#loggedIn").empty();
+    location.reload("#loginForm");
+  });
 
 });  //document ready
