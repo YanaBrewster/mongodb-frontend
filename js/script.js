@@ -3,11 +3,30 @@ console.log(sessionStorage);
 
 let url;
 
+// when the page loads
 $(document).ready(function(){
+  // hide the following divs
+  // $('#loginForm').hide();
+  // $('#logoutBtn').hide();
+  // $('#addProductForm').hide();
+  // $('#productForm').hide();
+  // $('#manipulate').hide();
+  // $('#registerForm').hide();
+  // $('#viewUserBtn').hide();
+  // $('#deleteProductForm').hide();
+  // $('#adminPage').hide();
+
   if (sessionStorage['userName']) {
     console.log('You are logged in');
+    // $('#manipulate').show();
+    // $('#loginBtn').hide();
+    // $('#logoutBtn').show();
+    // $('#registerBtn').hide();
+    // $('#viewUserBtn').show();
   } else {
     console.log('Please login');
+    // $('#logoutBtn').hide();
+    // $('#viewUserBtn').hide();
   }
 
   $('#adminPage').hide();
@@ -37,6 +56,10 @@ $(document).ready(function(){
     }//error
   });//ajax
 
+
+  // VIEW USERS BUTTON ===============================================================
+
+  // view users
   $('#viewUserBtn').click(function(){
     $.ajax({
       url : `${url}/allUsers`,
@@ -44,6 +67,17 @@ $(document).ready(function(){
       dataType : 'json',
       success : function(usersFromMongo){
         console.log(usersFromMongo);
+          // document.getElementById('usersCards').innerHTML +=
+          // "<h2>Users</h2>"
+
+        for(let i=0; i<usersFromMongo.length; i++){
+          $('#usersCards').empty();
+          document.getElementById('usersCards').innerHTML +=
+          `<div class="col mt-3">
+          <h3 class=""> ${usersFromMongo[i].username}</h3>
+          </div>`;
+        }
+
       },
       error:function() {
         console.log('ERROR: cannot call API');
@@ -52,6 +86,9 @@ $(document).ready(function(){
     });//ajax
   });
 
+  // VIEW ALL PRODUCTS FORM =================================================
+
+  // view products
   $('#viewProducts').click(function(){
     $.ajax({
       url : `${url}/allDBProducts`,
@@ -76,36 +113,39 @@ $(document).ready(function(){
     });//ajax
   });
 
-// update product
+  // UPDATE PRODUCT FORM ===============================================
 
-$('#productForm').submit(function(){
-  event.preventDefault();
-  let productId = $('#productId').val();
-  let productName = $('#productName').val();
-  let productPrice = $('#productPrice').val();
-  let userId = $('#userId').val();
-console.log(productId, productName, productPrice, userId);
+  // update product
+  $('#productForm').submit(function(){
+    event.preventDefault();
+    let productId = $('#productId').val();
+    let productName = $('#productName').val();
+    let productPrice = $('#productPrice').val();
+    let userId = $('#userId').val();
+    console.log(productId, productName, productPrice, userId);
 
-  $.ajax({
-    url :`${url}/updateProduct/${productId}`,
-    type :'PATCH',
-    data:{
-      name : productName,
-      price : productPrice,
-      userId : userId
-    },
-    success : function(data){
-      console.log(data);
+    $.ajax({
+      url :`${url}/updateProduct/${productId}`,
+      type :'PATCH',
+      data:{
+        name : productName,
+        price : productPrice,
+        userId : userId
+      },
+      success : function(data){
+        console.log(data);
 
-    },//success
-    error:function(){
-      console.log('error: cannot call api');
-    }//error
-  });//ajax
-});//submit function for product form
+      },//success
+      error:function(){
+        console.log('error: cannot call api');
+      }//error
+    });//ajax
+  });//submit function for product form
 
-  // login section
 
+  // LOGIN USER FORM ==================================================================
+
+  // login user
   $('#loginForm').submit(function(){
     event.preventDefault();
     let username = $('#username').val();
@@ -132,26 +172,33 @@ console.log(productId, productName, productPrice, userId);
           '<div class="col pt-5 pb-5"><h3>Welcome back ' + username + '!</h3></div>';
           $("#loginForm").hide();
           $("#loginBtn").hide();
-
-
         }
       },//success
       error:function(){
         console.log('error: cannot call api');
       }//error
 
-
     });//ajax
-
   });//submit function for login form
 
 
+  // LOG OUT USER BUTTON ===============================================================
+
+  // log out user
   $('#logoutBtn').click(function(){
     sessionStorage.clear()
-    $("#loginForm").show();
-    $("#loginBtn").show();
-    $("#loggedIn").empty();
+    $('#manipulate').hide();
+    $('#loginBtn').show();
+    $('#logoutBtn').hide();
+    $('#registerBtn').show();
+    $('#viewUserBtn').hide();
+    $('#productForm').hide();
+    $('#addProductForm').hide();
+    // $('#deleteForm').hide();
     location.reload("#loginForm");
   });
+
+
+
 
 });  //document ready

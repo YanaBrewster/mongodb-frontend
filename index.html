@@ -31,14 +31,17 @@
       <div id="loggedIn">
 
       </div>
+      <div id="usersCards">
+
+      </div>
 
       <div class="bg-dark text-light mt-4 mb-5">
         <button id="loginBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Login</button>
         <button id="logoutBtn" type="button" class="btn btn-dark rounded-pill">Logout</button>
         <button id="registerBtn" type="button" class="btn btn-dark rounded-pill mr-20px">Register</button>
         <button id="viewUserBtn" type="button" class="btn btn-dark rounded-pill">View all users</button>
-        <!-- login form -->
 
+        <!-- login form -->
         <form id="loginForm" class="pb-5 pl-4 bg-secondary">
           <label for="username" class=""> Username: </label>
           <input type="text" id="username" name="username" class="form-control col-4" value="username">
@@ -52,12 +55,48 @@
 
       <!-- Product manipulation -->
       <div id="manipulate" class="d-flex justify-content-center">
-          <button id="addProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Add new product</button>
-          <button id="updateProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Update a product</button>
-          <button id="deleteProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Delete a product</button>
+        <button id="addProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Add new product</button>
+        <button id="updateProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Update a product</button>
+        <button id="deleteProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Delete a product</button>
       </div>
 
-      <!-- Input ID -->
+      <!-- register form -->
+      <form id="registerForm" class="bg-light py-3 px-3 mt-5">
+        <h1 class="text-primary">Sign up!</h1>   <br><br>
+        <div class="form-group col-8">
+          <label for="r-username">Username</label>
+          <input type="text" name="r-username" class="form-control" id="r-username" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group col-8">
+          <label for="r-email">Email</label>
+          <input type="email" autocomplete="new-password" name="r-email" class="form-control" id="r-email">
+        </div>
+        <div class="form-group col-8">
+          <label for="r-password">Password</label>
+          <input type="password" autocomplete="new-password" name="r-password" class="form-control" id="r-password">
+        </div>
+        <button id="r-submit" name="r-button" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <!-- update user form -->
+      <form id="updateUserForm" class="bg-light py-3 px-3 mt-5">
+        <h1 class="text-primary">Update Your Details</h1>   <br><br>
+        <div class="form-group col-8">
+          <label for="up-username">Username</label>
+          <input type="text" name="r-username" class="form-control" id="up-username" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group col-8">
+          <label for="up-email">Email</label>
+          <input type="email" autocomplete="new-password" name="up-email" class="form-control" id="up-email">
+        </div>
+        <div class="form-group col-8">
+          <label for="up-password">Password</label>
+          <input type="password" autocomplete="new-password" name="up-password" class="form-control" id="up-password">
+        </div>
+        <button id="up-submit" name="up-button" type="submit" class="btn btn-primary">Update Changes</button>
+      </form>
+
+
       <div id="inputIdDiv" >
         <!-- add product form -->
         <form id="addProductForm" class="py-5 px-5">
@@ -71,7 +110,7 @@
           <input type="number" id="addProductPrice" name="addProductPrice" >
           <br><br>
 
-          <label class="mr-5" for="userId"> User ID: </label>
+          <label class="mr-4" for="userId"> User ID: </label>
           <input type="text" class="ml-5" id="addProductUserId" name="addProductUserId" >
           <br><br>
 
@@ -81,7 +120,7 @@
         <!-- update product form -->
         <form id="productForm" class="py-5 px-5">
           <h1 class="text-primary">Update Product</h1>   <br><br>
-          <label class="mr-5" for="productId"> Product ID: </label>
+          <label class="mr-4" for="productId"> Product ID: </label>
           <input type="text" class="ml-5" id="productId" name="inputId" >
           <br>
 
@@ -93,12 +132,35 @@
           <input type="number" id="productPrice" name="productPrice" >
           <br><br>
 
-          <label class="mr-5" for="userId"> User ID: </label>
+          <label class="mr-4" for="userId"> User ID: </label>
           <input type="text" class="ml-5" id="userId" name="userId" >
           <br><br>
 
           <button id="updateProduct" name="productButton" type="submit" class="btn btn-primary">Update product</button>
         </form>
+
+        <!-- delete product form -->
+        <form id="deleteProductForm" class="py-5 px-5">
+          <h1 class="text-primary">Delete Product</h1>   <br><br>
+          <label class="mr-4" for="productId"> Product ID: </label>
+          <input type="text" class="ml-5" id="d-productId" name="inputId" >
+          <br>
+
+          <label class="mr-4" for="productName"> Name of product: </label>
+          <input type="text" id="d-productName" name="productName" >
+          <br><br>
+
+          <label class="mr-4" for="productPrice"> Price of product: </label>
+          <input type="number" id="d-productPrice" name="productPrice" >
+          <br><br>
+
+          <label class="mr-4" for="userId"> User ID: </label>
+          <input type="text" class="ml-5" id="d-userId" name="userId" >
+          <br><br>
+
+          <button id="deleteProduct" name="productButton" type="submit" class="btn btn-primary">Delete product</button>
+        </form>
+
       </div>
 
 
