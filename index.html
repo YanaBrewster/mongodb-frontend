@@ -31,7 +31,7 @@
       <div id="loggedIn">
 
       </div>
-      <div id="usersCards">
+      <div id="usersCards" class="pb-5">
 
       </div>
 
@@ -53,29 +53,22 @@
         </form>
       </div>
 
-      <!-- Product manipulation -->
-      <div id="manipulate" class="d-flex justify-content-center">
-        <button id="addProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Add new product</button>
-        <button id="updateProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Update a product</button>
-        <button id="deleteProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Delete a product</button>
-      </div>
-
       <!-- register form -->
       <form id="registerForm" class="bg-light py-3 px-3 mt-5">
         <h1 class="text-primary">Sign up!</h1>   <br><br>
         <div class="form-group col-8">
-          <label for="r-username">Username</label>
-          <input type="text" name="r-username" class="form-control" id="r-username" aria-describedby="emailHelp">
+          <label for="registerUsername">Username</label>
+          <input type="text" name="registerUsername" class="form-control" id="registerUsername" aria-describedby="emailHelp">
         </div>
         <div class="form-group col-8">
-          <label for="r-email">Email</label>
-          <input type="email" autocomplete="new-password" name="r-email" class="form-control" id="r-email">
+          <label for="registerEmail">Email</label>
+          <input type="email" autocomplete="new-password" name="registerEmail" class="form-control" id="registerEmail">
         </div>
         <div class="form-group col-8">
-          <label for="r-password">Password</label>
-          <input type="password" autocomplete="new-password" name="r-password" class="form-control" id="r-password">
+          <label for="registerPassword">Password</label>
+          <input type="password" autocomplete="new-password" name="registerPassword" class="form-control" id="registerPassword">
         </div>
-        <button id="r-submit" name="r-button" type="submit" class="btn btn-primary">Submit</button>
+        <button id="registerSubmit" name="registerButton" type="submit" class="btn btn-primary">Submit</button>
       </form>
 
       <!-- update user form -->
@@ -83,7 +76,7 @@
         <h1 class="text-primary">Update Your Details</h1>   <br><br>
         <div class="form-group col-8">
           <label for="up-username">Username</label>
-          <input type="text" name="r-username" class="form-control" id="up-username" aria-describedby="emailHelp">
+          <input type="text" name="username" class="form-control" id="up-username" aria-describedby="emailHelp">
         </div>
         <div class="form-group col-8">
           <label for="up-email">Email</label>
@@ -97,8 +90,18 @@
       </form>
 
 
+      <!-- Product manipulation -->
+      <div id="manipulate" class="d-flex justify-content-center">
+        <button id="addProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Add new product</button>
+        <button id="updateProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Update a product</button>
+        <button id="deleteProductBtn" class="py-4 px-5 text-center btn-lg btn-outline-primary" type="button" name="button">Delete a product</button>
+      </div>
+
+
       <div id="inputIdDiv" >
+
         <!-- add product form -->
+
         <form id="addProductForm" class="py-5 px-5">
           <h1 class="text-primary">Add a Product</h1>   <br><br>
 
@@ -140,26 +143,13 @@
         </form>
 
         <!-- delete product form -->
-        <form id="deleteProductForm" class="py-5 px-5">
-          <h1 class="text-primary">Delete Product</h1>   <br><br>
-          <label class="mr-4" for="productId"> Product ID: </label>
-          <input type="text" class="ml-5" id="d-productId" name="inputId" >
-          <br>
-
-          <label class="mr-4" for="productName"> Name of product: </label>
-          <input type="text" id="d-productName" name="productName" >
+        <form id="deleteForm" class="">
+          <label class="mr-5" for="deleteProductId"> Enter product ID to delete: </label>
+          <input type="text" class="ml-5 rounded-pill" id="deleteProductId" name="inputId" >
           <br><br>
-
-          <label class="mr-4" for="productPrice"> Price of product: </label>
-          <input type="number" id="d-productPrice" name="productPrice" >
-          <br><br>
-
-          <label class="mr-4" for="userId"> User ID: </label>
-          <input type="text" class="ml-5" id="d-userId" name="userId" >
-          <br><br>
-
-          <button id="deleteProduct" name="productButton" type="submit" class="btn btn-primary">Delete product</button>
+            <button id="deleteProduct" name="deleteProductButton" type="submit" class="btn btn-primary rounded-pill">Delete product</button>
         </form>
+
 
       </div>
 
