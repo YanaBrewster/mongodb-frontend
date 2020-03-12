@@ -10,32 +10,32 @@ $(document).ready(function(){
   if (sessionStorage['userName']) {
     console.log('You are logged in');
     // buttons
-    $('#manipulate').show();
-    $('#loginBtn').hide();
-    $('#registerBtn').hide();
-    $('#logoutBtn').show();
-    $('#registerBtn').hide();
-    $('#viewUserBtn').show();
-    // forms
-    $('#loginForm').hide();
-    $('#registerForm').hide();
-    $('#updateUserForm').hide();
-    $('#productForm').hide();
-    $('#deleteForm').hide();
-    $('#addProductForm').hide();
+    // $('#manipulate').show();
+    // $('#loginBtn').hide();
+    // $('#registerBtn').hide();
+    // $('#logoutBtn').show();
+    // $('#registerBtn').hide();
+    // $('#viewUserBtn').show();
+    // // forms
+    // $('#loginForm').hide();
+    // $('#registerForm').hide();
+    // $('#updateUserForm').hide();
+    // $('#productForm').hide();
+    // $('#deleteForm').hide();
+    // $('#addProductForm').hide();
   } else {
     console.log('Please login');
     // buttons
-    $('#logoutBtn').hide();
-    $('#viewUserBtn').hide();
-    $('#manipulate').hide();
-    // forms
-    $('#loginForm').show();
-    $('#registerForm').hide();
-    $('#updateUserForm').hide();
-    $('#productForm').hide();
-    $('#deleteForm').hide();
-    $('#addProductForm').hide();
+    // $('#logoutBtn').hide();
+    // $('#viewUserBtn').hide();
+    // $('#manipulate').hide();
+    // // forms
+    // $('#loginForm').show();
+    // $('#registerForm').hide();
+    // $('#updateUserForm').hide();
+    // $('#productForm').hide();
+    // $('#deleteForm').hide();
+    // $('#addProductForm').hide();
   }
 
   $('#adminPage').hide();
